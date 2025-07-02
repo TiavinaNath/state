@@ -11,16 +11,17 @@ import java.util.Random;
 
 @RestController
 public class StatefullRandomValueController {
-    private static final Path FILE_PATH = Paths.get(System.getProperty("java.io.tmpdir"), "random.txt");
+  private static final Path FILE_PATH =
+      Paths.get(System.getProperty("java.io.tmpdir"), "random.txt");
 
-    @GetMapping("/random-value")
-    public String getRandomValue() throws IOException {
-        if (Files.exists(FILE_PATH)) {
-            return Files.readString(FILE_PATH);
-        } else {
-            String value = String.valueOf(new Random().nextInt(10000));
-            Files.writeString(FILE_PATH, value);
-            return value;
-        }
+  @GetMapping("/random-value")
+  public String getRandomValue() throws IOException {
+    if (Files.exists(FILE_PATH)) {
+      return Files.readString(FILE_PATH);
+    } else {
+      String value = String.valueOf(new Random().nextInt(10000));
+      Files.writeString(FILE_PATH, value);
+      return value;
     }
+  }
 }
