@@ -11,7 +11,7 @@ import java.util.Random;
 
 @RestController
 public class StatefullRandomValueController {
-    private static final Path FILE_PATH = Paths.get("random.txt");
+    private static final Path FILE_PATH = Paths.get(System.getProperty("java.io.tmpdir"), "random.txt");
 
     @GetMapping("/random-value")
     public String getRandomValue() throws IOException {
